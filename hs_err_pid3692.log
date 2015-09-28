@@ -1,0 +1,142 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (javaClasses.cpp:127), pid=3692, tid=9924
+#  fatal error: Invalid layout of preloaded class
+#
+# JRE version:  (8.0_51-b16) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.51-b03 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000104d800):  JavaThread "Unknown thread" [_thread_in_vm, id=9924, stack(0x00000000011f0000,0x00000000012f0000)]
+
+Stack: [0x00000000011f0000,0x00000000012f0000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x32b4ca]
+V  [jvm.dll+0x2797e3]
+V  [jvm.dll+0x27a479]
+V  [jvm.dll+0x2716e6]
+V  [jvm.dll+0x67fc3]
+V  [jvm.dll+0x680b3]
+V  [jvm.dll+0x7d6da]
+V  [jvm.dll+0x7da46]
+V  [jvm.dll+0xf2087]
+V  [jvm.dll+0xf2416]
+V  [jvm.dll+0x20f077]
+V  [jvm.dll+0x240d2a]
+V  [jvm.dll+0x15b9a1]
+C  [javaw.exe+0x217e]
+C  [javaw.exe+0xcd37]
+C  [javaw.exe+0xcdcb]
+C  [KERNEL32.DLL+0x13d2]
+C  [ntdll.dll+0x15454]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000104d800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=9924, stack(0x00000000011f0000,0x00000000012f0000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.027 loading class java/lang/CharSequence done
+Event: 0.027 loading class java/lang/String done
+Event: 0.027 loading class java/lang/Class
+Event: 0.027 loading class java/lang/reflect/AnnotatedElement
+Event: 0.028 loading class java/lang/reflect/AnnotatedElement done
+Event: 0.028 loading class java/lang/reflect/GenericDeclaration
+Event: 0.028 loading class java/lang/reflect/GenericDeclaration done
+Event: 0.028 loading class java/lang/reflect/Type
+Event: 0.028 loading class java/lang/reflect/Type done
+Event: 0.028 loading class java/lang/Class done
+
+
+Dynamic libraries:
+0x00007ff648f20000 - 0x00007ff648f57000 	C:\Program Files\Java\jre1.8.0_51\bin\javaw.exe
+0x00007ff850b30000 - 0x00007ff850cdc000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff850130000 - 0x00007ff85026e000 	C:\WINDOWS\system32\KERNEL32.DLL
+0x00007ff84e0a0000 - 0x00007ff84e1b5000 	C:\WINDOWS\system32\KERNELBASE.dll
+0x00007ff84c810000 - 0x00007ff84c89e000 	C:\WINDOWS\system32\apphelp.dll
+0x00007ff840ba0000 - 0x00007ff840bf3000 	C:\WINDOWS\AppPatch\AppPatch64\AcGenral.DLL
+0x00007ff850910000 - 0x00007ff8509ba000 	C:\WINDOWS\system32\msvcrt.dll
+0x00007ff84da60000 - 0x00007ff84da8e000 	C:\WINDOWS\SYSTEM32\SspiCli.dll
+0x00007ff84e6d0000 - 0x00007ff84e724000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x00007ff84e550000 - 0x00007ff84e6c7000 	C:\WINDOWS\system32\USER32.dll
+0x00007ff84e1c0000 - 0x00007ff84e354000 	C:\WINDOWS\system32\ole32.dll
+0x00007ff84ea90000 - 0x00007ff84ffa9000 	C:\WINDOWS\system32\SHELL32.dll
+0x00007ff84d2c0000 - 0x00007ff84d2e1000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ff84e3e0000 - 0x00007ff84e48a000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x00007ff848e10000 - 0x00007ff848e2e000 	C:\WINDOWS\SYSTEM32\MPR.dll
+0x00007ff84e940000 - 0x00007ff84ea81000 	C:\WINDOWS\system32\RPCRT4.dll
+0x00007ff84e8e0000 - 0x00007ff84e939000 	C:\WINDOWS\SYSTEM32\sechost.dll
+0x00007ff8504f0000 - 0x00007ff850701000 	C:\WINDOWS\SYSTEM32\combase.dll
+0x00007ff84e790000 - 0x00007ff84e8df000 	C:\WINDOWS\system32\GDI32.dll
+0x00007ff84dc90000 - 0x00007ff84dca5000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007ff84c750000 - 0x00007ff84c802000 	C:\WINDOWS\SYSTEM32\SHCORE.dll
+0x00007ff8509c0000 - 0x00007ff8509f6000 	C:\WINDOWS\system32\IMM32.DLL
+0x00007ff84ffd0000 - 0x00007ff850122000 	C:\WINDOWS\system32\MSCTF.dll
+0x00007ff84b8d0000 - 0x00007ff84bb4a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.17810_none_6240b9c7ecbd0bda\COMCTL32.dll
+0x0000000065ce0000 - 0x0000000065db2000 	C:\Program Files\Java\jre1.8.0_51\bin\msvcr100.dll
+0x0000000065280000 - 0x0000000065b03000 	C:\Program Files\Java\jre1.8.0_51\bin\server\jvm.dll
+0x00007ff843b20000 - 0x00007ff843b29000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff84b320000 - 0x00007ff84b342000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff84b350000 - 0x00007ff84b35a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff850720000 - 0x00007ff850727000 	C:\WINDOWS\system32\PSAPI.DLL
+0x00007ff84e730000 - 0x00007ff84e78a000 	C:\WINDOWS\system32\WS2_32.dll
+0x00007ff84b040000 - 0x00007ff84b06a000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ff850a00000 - 0x00007ff850a09000 	C:\WINDOWS\system32\NSI.dll
+0x00007ff84e050000 - 0x00007ff84e09f000 	C:\WINDOWS\SYSTEM32\cfgmgr32.dll
+0x00007ff84ca80000 - 0x00007ff84caa8000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x0000000065190000 - 0x000000006519f000 	C:\Program Files\Java\jre1.8.0_51\bin\verify.dll
+0x0000000065160000 - 0x0000000065189000 	C:\Program Files\Java\jre1.8.0_51\bin\java.dll
+0x0000000065140000 - 0x0000000065156000 	C:\Program Files\Java\jre1.8.0_51\bin\zip.dll
+0x00007ff84a7c0000 - 0x00007ff84a949000 	C:\WINDOWS\SYSTEM32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 -Xbootclasspath:C:\Program Files\Android\platforms\android-19\android.jar 
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 55982 -testLoaderClass org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestLoader -loaderpluginname org.eclipse.jdt.junit.runtime -classNames com.example.diabetesplanner.test.LocationLogiccTest
+java_class_path (initial): C:\Users\rober_000\workspace\DiabetesPlannerTest\bin\classes;C:\Users\rober_000\workspace\diabetes-planner\App\libs\weka.jar;C:\Users\rober_000\workspace\diabetes-planner\App\libs\achartengine-1.1.0.jar;C:\Users\rober_000\workspace\diabetes-planner\App\libs\commons-math3-3.3.jar;C:\Users\rober_000\workspace\diabetes-planner\App\libs\android-support-v7-appcompat.jar;C:\Users\rober_000\workspace\diabetes-planner\App\libs\json_simple-1.1.jar;C:\Users\rober_000\workspace\diabetes-planner\App\libs\dropbox-android-sdk-1.6.3.jar;C:\Users\rober_000\workspace\diabetes-planner\App\bin\classes;/C:/Program Files/eclipse/configuration/org.eclipse.osgi/205/0/.cp/
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:/Program Files/Java/jre1.8.0_51/bin/server;C:/Program Files/Java/jre1.8.0_51/bin;C:/Program Files/Java/jre1.8.0_51/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Lenovo\FusionEngine;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files (x86)\Skype\Phone\;C:\Users\rober_000\AppData\Roaming\MiKTeX\2.9\miktex\bin\x64\;C:\Program Files\eclipse;
+USERNAME=rober_000
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 69 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 69 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 8310040k(3026732k free), swap 9620760k(2164272k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.51-b03) for windows-amd64 JRE (1.8.0_51-b16), built on Jun  8 2015 18:03:07 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Tue Sep 22 14:56:30 2015
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
