@@ -7,7 +7,7 @@ import android.test.ServiceTestCase;
 import android.util.Log;
 
 public class DataCollectorTest extends ServiceTestCase<DataCollector> {
-	
+
 	public DataCollectorTest() {
 		super(DataCollector.class);
 	}
@@ -16,31 +16,53 @@ public class DataCollectorTest extends ServiceTestCase<DataCollector> {
 		super.setUp();
 	}
 	
+	protected void tearDown() throws Exception{
+		DataCollector.counterSampleRate=0;
+		super.tearDown();
+	}
+
+	public void testSampleRate() throws InterruptedException{
+		long startTime, endTime, duration, realSampleRate;
+
+		//start service
+		Intent service = new Intent(getSystemContext(), DataCollector.class);
+		startService(service);
+
+		startTime = System.currentTimeMillis();
+		Thread.sleep(1000);
+		endTime = System.currentTimeMillis();
+		duration = endTime-startTime;
+		realSampleRate = DataCollector.counterSampleRate/(duration/1000);
+		
+		Log.d("JUnit Test", "testSampleRate: "+realSampleRate);
+		
+		//True if real sample rate is close to predefined sample rate
+		assertTrue(P.sampleRate-4 < realSampleRate && realSampleRate < P.sampleRate+4);
+	}
+
 	/**This test tests, if initial time window width is obeyed during sensor data collection. 
 	 * @author Robert
+	 * @throws InterruptedException 
 	 */
-	public void testInitialTimeWindow(){
+	public void testFinalTimeWindow() throws InterruptedException{
 		long startTime, endTime, duration;
 
 		//start service
 		Intent service = new Intent(getSystemContext(), DataCollector.class);
 		startService(service);
-		
+
 		startTime = System.currentTimeMillis();
-		
+
 		//wait until the Collection has been sent. Ideally this takes exactly P.initTimeWindow seconds.
 		while(!DataCollector.firstCollectionSent){
-			try{
 				Thread.sleep(500);
-			} catch(Exception e){
-				e.printStackTrace(); 
-				fail();
 			}
-		}
-		
+
 		endTime = System.currentTimeMillis();
-		duration = endTime - startTime; 
-		Log.d("JUnit Test", "testInitialTimeWindow "+duration/1000);
-		assertTrue(P.initTimeWindow-2<duration && duration<P.initTimeWindow+2);
+		
+		//duration in seconds
+		duration = (endTime - startTime)/1000; 
+		Log.d("JUnit Test", "testFinalTimeWindow: "+duration);
+		assertTrue(P.finTimeWindow-2<duration && duration<P.finTimeWindow+2);
 	}
 }
