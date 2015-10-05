@@ -40,7 +40,7 @@ public class DataCollectorTest extends ServiceTestCase<DataCollector> {
 		assertTrue(P.sampleRate-4 < realSampleRate && realSampleRate < P.sampleRate+4);
 	}
 
-	/**This test tests, if initial time window width is obeyed during sensor data collection. 
+	/**This test tests, if final time window width is obeyed during sensor data collection. 
 	 * @author Robert
 	 * @throws InterruptedException 
 	 */
