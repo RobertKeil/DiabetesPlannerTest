@@ -1,10 +1,9 @@
 package com.example.diabetesplanner.test;
 
-import com.example.diabetesplanner.DataExchange;
-
-import recognition.model.DataCollector;
-import recognition.model.LocationLogic;
-import recognition.model.MySQLiteHelper;
+import teamproject.diabetesplanner.model.DataCollector;
+import teamproject.diabetesplanner.model.LocationLogic;
+import teamproject.diabetesplanner.model.MySQLiteHelper;
+import teamproject.diabetesplanner.properties.P;
 import android.content.Context;
 import android.content.Intent;
 import android.test.ServiceTestCase;
@@ -30,6 +29,7 @@ public class LocationLogicTest extends ServiceTestCase<DataCollector> {
 	@Override
 	protected void tearDown() throws Exception{
 		super.tearDown();
+		
 	}
 
 	
@@ -58,27 +58,26 @@ public class LocationLogicTest extends ServiceTestCase<DataCollector> {
 //		DataExchange.setHelper(helper);
 //		
 		
-		MySQLiteHelper helper1 = new MySQLiteHelper(context);
-		Log.d("LocationLogicTest",helper1.getDatabaseName());
-		DataExchange.setHelper(helper1); 		
-		MySQLiteHelper helper2 = new MySQLiteHelper(context);
+		P.helper = new MySQLiteHelper(context);
 		
-		lon = DataCollector.track.getLongitude();
-		lat = DataCollector.track.getLatitude();
+		lon = DataCollector.track.getLocation().getLongitude();
+		lat = DataCollector.track.getLocation().getLatitude();
 		
 		//Add a Location Record with the current longitude and latitude
-		helper2.addLocationRecord(lat, lon, testLocation);
+		P.helper.addLocationRecord(lat, lon, testLocation);
 		
 		//Test the method getCurrentLocation several times
 		for(int i=0; i<numberIterations; i++){
 			
-			predictedLocation=collector.getCurrentLocation(helper2);
+			predictedLocation=collector.getCurrentLocation();
 			
 			if (predictedLocation.equals(testLocation)){
 				counterCorrectTagging++;
 			}
 			Thread.sleep(500);
 		}
+		
+		P.helper.deleteDatabase();
 		
 		accuracy = counterCorrectTagging/numberIterations;
 		Log.d("LocationLogicTest","Accuracy "+accuracy);
