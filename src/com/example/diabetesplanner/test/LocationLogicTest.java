@@ -6,6 +6,7 @@ import teamproject.diabetesplanner.model.MySQLiteHelper;
 import teamproject.diabetesplanner.properties.P;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.test.ServiceTestCase;
 import android.util.Log;
 
@@ -43,8 +44,9 @@ public class LocationLogicTest extends ServiceTestCase<DataCollector> {
 		
 		double lon, lat;
 		double accuracy;
+		Location location;
 		int counterCorrectTagging=0;
-		int numberIterations=20;
+		int secondsForTest=20;
 		String predictedLocation;
 		final String testLocation="Test";
 		Context context = getSystemContext();
@@ -60,26 +62,27 @@ public class LocationLogicTest extends ServiceTestCase<DataCollector> {
 		
 		P.helper = new MySQLiteHelper(context);
 		
-		lon = DataCollector.track.getLocation().getLongitude();
-		lat = DataCollector.track.getLocation().getLatitude();
+		location = DataCollector.track.getLocation();
+		lon = location.getLongitude();
+		lat = location.getLatitude();
 		
 		//Add a Location Record with the current longitude and latitude
 		P.helper.addLocationRecord(lat, lon, testLocation);
 		
 		//Test the method getCurrentLocation several times
-		for(int i=0; i<numberIterations; i++){
+		for(int i=0; i<secondsForTest; i++){
 			
 			predictedLocation=collector.getCurrentLocation();
 			
 			if (predictedLocation.equals(testLocation)){
 				counterCorrectTagging++;
 			}
-			Thread.sleep(500);
+			Thread.sleep(1000);
 		}
 		
 		P.helper.deleteDatabase();
 		
-		accuracy = counterCorrectTagging/numberIterations;
+		accuracy = counterCorrectTagging/secondsForTest;
 		Log.d("LocationLogicTest","Accuracy "+accuracy);
 		
 		assertTrue(accuracy > 0.6);
