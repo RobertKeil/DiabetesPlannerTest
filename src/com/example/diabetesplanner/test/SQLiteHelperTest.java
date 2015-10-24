@@ -4,12 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import gui.items.BloodSugar;
-import gui.items.Carb;
-import gui.items.HumanActivity;
-import gui.items.Insulin;
-import gui.items.MeasuringActivity;
-import recognition.model.MySQLiteHelper;
+import teamproject.diabetesplanner.gui.items.BloodSugar;
+import teamproject.diabetesplanner.gui.items.Carb;
+import teamproject.diabetesplanner.gui.items.HumanActivity;
+import teamproject.diabetesplanner.gui.items.Insulin;
+import teamproject.diabetesplanner.gui.items.MeasuringActivity;
+import teamproject.diabetesplanner.model.MySQLiteHelper;
+import android.database.Cursor;
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
@@ -107,10 +108,10 @@ public class SQLiteHelperTest extends AndroidTestCase {
 		boolean autocreatedF = true;
 		
 		
-		String location1 = "home";
-		String location2 = "uni";
-		String location3 = "street";
-		String location4 = "club";
+		int location1 = 1; //home
+		int location2 = 2; //Uni
+		int location3 = 3; //work
+		int location4 = 4; //club
 		
 		
 		Calendar time1 = new GregorianCalendar(2015, 7, 1, 13, 55, 43);
@@ -147,7 +148,45 @@ public class SQLiteHelperTest extends AndroidTestCase {
 		assertTrue("the manual activity was not added", db.addManualRecord(human2));
 		assertTrue("the manual activity was not added", db.addManualRecord(human3));
 		assertTrue("the manual activity was not added", db.addManualRecord(human4));
-
+			
+		}
+	public void testInputAndOutputLocations(){
+		
+		String location1= "Home";
+		String location2 = "Club";
+		String location3 = "Work";
+		String location4 = "Uni";
+		
+		double lat1 = 123.1232; 
+		double lat2 = 126.12327;
+		double lat3 = 7.65871;
+		double lat4 = 0.12308321;
+		
+		
+		double long1 = 45.3213;
+		double long2 = 67.99873;
+		double long3 = 9.3213;
+		double long4 = 0.3213;
+		
+		assertTrue("Location record was added", db.addLocationRecord(lat1, long1, location1));
+		assertTrue("Location record was added", db.addLocationRecord(lat2, long2, location2));
+		assertTrue("Location record was added", db.addLocationRecord(lat3, long3, location3));
+		assertTrue("Location record was added", db.addLocationRecord(lat4, long4, location4));
+		
+		Cursor curs1 = db.getLocationNameById(1);
+		Cursor curs2 = db.getLocationNameById(2);
+		Cursor curs3 = db.getLocationNameById(3);
+		Cursor curs4 = db.getLocationNameById(4);
+		
+		assertEquals(location1, (curs1.getString(curs1.getColumnIndex("location"))));
+		assertEquals(location2, (curs2.getString(curs2.getColumnIndex("location"))));
+		assertEquals(location3, (curs3.getString(curs3.getColumnIndex("location"))));
+		assertFalse(location4.equals(curs1.getString(curs1.getColumnIndex("location"))));
+		assertFalse(location4.equals(curs2.getString(curs2.getColumnIndex("location"))));
+		assertFalse(location4.equals(curs3.getString(curs3.getColumnIndex("location"))));
+		
+		assertTrue(db.updateLocations(1, "House"));
+		assertTrue(db.updateLocations(2, "Street"));
 
 	}
 
