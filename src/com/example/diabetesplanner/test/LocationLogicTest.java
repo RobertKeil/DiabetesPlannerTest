@@ -47,6 +47,7 @@ public class LocationLogicTest extends ServiceTestCase<DataCollector> {
 		Location location;
 		int counterCorrectTagging=0;
 		int secondsForTest=20;
+		int predictedLocationID;
 		String predictedLocation;
 		final String testLocation="Test";
 		Context context = getSystemContext();
@@ -72,7 +73,8 @@ public class LocationLogicTest extends ServiceTestCase<DataCollector> {
 		//Test the method getCurrentLocation several times
 		for(int i=0; i<secondsForTest; i++){
 			
-			predictedLocation=collector.getCurrentLocation();
+			predictedLocationID=collector.getCurrentLocation();
+			predictedLocation=LocationLogic.getLocationName(predictedLocationID);
 			
 			if (predictedLocation.equals(testLocation)){
 				counterCorrectTagging++;
