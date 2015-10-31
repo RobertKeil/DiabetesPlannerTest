@@ -9,6 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.test.ServiceTestCase;
 import android.util.Log;
 
+/**
+ * Tests the behaviour of the Data Collector Service
+ * @author Robert
+ *
+ */
 public class DataCollectorTest extends ServiceTestCase<DataCollector> {
 
 	public DataCollectorTest() {
@@ -23,7 +28,10 @@ public class DataCollectorTest extends ServiceTestCase<DataCollector> {
 		DataCollector.counterSampleRate=0;
 		super.tearDown();
 	}
-
+	 /**Tests whether the sample rate is adhered in the app, i.e. whether really P.sampleRate records are sent per second to the calculation class
+	  * @author Robert
+	  * @throws InterruptedException
+	  */
 	public void testSampleRate() throws InterruptedException{
 		long startTime, endTime, duration, realSampleRate;
 
@@ -32,6 +40,7 @@ public class DataCollectorTest extends ServiceTestCase<DataCollector> {
 		startService(service);
 
 		startTime = System.currentTimeMillis();
+		//let the service run for a seccond
 		Thread.sleep(1000);
 		endTime = System.currentTimeMillis();
 		duration = endTime-startTime;
@@ -70,7 +79,7 @@ public class DataCollectorTest extends ServiceTestCase<DataCollector> {
 	}
 	
 	
-	/* Tests how many bytes are needed for each day
+	/** Tests how many bytes are needed for each day
 	 * @author Robert
 	 */
 	public void testDatabaseSize() throws InterruptedException{

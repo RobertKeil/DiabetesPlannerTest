@@ -1,15 +1,14 @@
 package com.example.diabetesplanner.test;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import teamproject.diabetesplanner.database.MySQLiteHelper;
 import teamproject.diabetesplanner.gui.items.BloodSugar;
 import teamproject.diabetesplanner.gui.items.Carb;
 import teamproject.diabetesplanner.gui.items.HumanActivity;
 import teamproject.diabetesplanner.gui.items.Insulin;
 import teamproject.diabetesplanner.gui.items.MeasuringActivity;
-import teamproject.diabetesplanner.model.MySQLiteHelper;
 import android.database.Cursor;
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;

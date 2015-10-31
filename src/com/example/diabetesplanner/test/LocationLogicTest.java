@@ -1,8 +1,8 @@
 package com.example.diabetesplanner.test;
 
+import teamproject.diabetesplanner.database.MySQLiteHelper;
+import teamproject.diabetesplanner.location.LocationLogic;
 import teamproject.diabetesplanner.model.DataCollector;
-import teamproject.diabetesplanner.model.LocationLogic;
-import teamproject.diabetesplanner.model.MySQLiteHelper;
 import teamproject.diabetesplanner.properties.P;
 import android.content.Context;
 import android.content.Intent;
