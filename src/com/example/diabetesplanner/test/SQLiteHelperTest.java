@@ -76,9 +76,9 @@ public class SQLiteHelperTest extends AndroidTestCase {
 		MeasuringActivity bloodSugar = new BloodSugar(time3, amount1);
 		MeasuringActivity bloodSugar1 = new BloodSugar(time1, amount2);
 		
-		assertEquals(insulin.getValue(),amount2);
-		assertEquals(carbs.getValue(),carbVal);
-		assertEquals(bloodSugar.getValue(),amount1);
+		assertEquals(insulin.getValueAsStored(),amount2);
+		assertEquals(carbs.getValueAsStored(),carbVal);
+		assertEquals(bloodSugar.getValueAsStored(),amount1);
 		
 		assertNotSame(insulin, bloodSugar);
 		assertNotSame(carbs, insulin);
@@ -167,10 +167,10 @@ public class SQLiteHelperTest extends AndroidTestCase {
 		double long3 = 9.3213;
 		double long4 = 0.3213;
 		
-		assertTrue("Location record was added", db.addLocationRecord(lat1, long1, location1));
-		assertTrue("Location record was added", db.addLocationRecord(lat2, long2, location2));
-		assertTrue("Location record was added", db.addLocationRecord(lat3, long3, location3));
-		assertTrue("Location record was added", db.addLocationRecord(lat4, long4, location4));
+		db.addLocationRecord(lat1, long1, location1);
+		db.addLocationRecord(lat2, long2, location2);
+		db.addLocationRecord(lat3, long3, location3);
+		db.addLocationRecord(lat4, long4, location4);
 		
 		Cursor curs1 = db.getLocationNameById(1);
 		Cursor curs2 = db.getLocationNameById(2);
